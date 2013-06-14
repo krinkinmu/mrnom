@@ -13,15 +13,16 @@ import com.example.mrnom.framework.common.TouchEvent;
 import com.example.mrnom.framework.handlers.TouchHandler;
 
 public class SingleTouchHandler implements TouchHandler, OnTouchListener {
-	private boolean isTouched;
-	private float scaleX;
-	private float scaleY;
-	private int touchX;
-	private int touchY;
-	
 	private final List<TouchEvent> events = new ArrayList<TouchEvent>();
 	private final List<TouchEvent> buffer = new ArrayList<TouchEvent>();
 	private final Pool<TouchEvent> pool;
+	
+	private final float scaleX;
+	private final float scaleY;
+	
+	private boolean isTouched;
+	private int touchX;
+	private int touchY;
 	
 	public SingleTouchHandler(View view, float scaleX, float scaleY) {
 		PoolObjectFactory<TouchEvent> factory = new PoolObjectFactory<TouchEvent>() {
