@@ -5,9 +5,8 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
-import android.graphics.Point;
-import android.os.Bundle;
 import android.os.Build.VERSION;
+import android.os.Bundle;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import android.view.Window;
@@ -46,7 +45,7 @@ public abstract class AndroidGame extends Activity implements Game {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		
-		if (VERSION.SDK_INT < 17) {
+		if (Integer.parseInt(VERSION.SDK) < 17) {
 			PowerManager manager = (PowerManager) getSystemService(Context.POWER_SERVICE);
 			lock = manager.newWakeLock(PowerManager.FULL_WAKE_LOCK, TAG);
 		} else {
@@ -58,16 +57,8 @@ public abstract class AndroidGame extends Activity implements Game {
 		int height = isLandscape ? SHORT : LONG;
 		Bitmap bitmap = Bitmap.createBitmap(width, height, Config.RGB_565);
 
-		int displayWidth, displayHeight;
-		if (VERSION.SDK_INT < 13) {
-			displayWidth = getWindowManager().getDefaultDisplay().getWidth();
-			displayHeight = getWindowManager().getDefaultDisplay().getHeight();
-		} else {
-			Point size = new Point();
-			getWindowManager().getDefaultDisplay().getSize(size);
-			displayWidth = size.x;
-			displayHeight = size.y;
-		}
+		int displayWidth = getWindowManager().getDefaultDisplay().getWidth();
+		int displayHeight = getWindowManager().getDefaultDisplay().getHeight();
 		float scaleX = (float) width  / displayWidth;
 		float scaleY = (float) height / displayHeight;
 		
