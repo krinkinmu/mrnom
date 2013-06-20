@@ -30,27 +30,27 @@ public class MainMenuScreen extends Screen {
 		
 		for (TouchEvent event : touches) {
 			if (event.type == TouchEvent.TOUCH_UP) {
-				if (inBounds(event, SOUND_BUTTON_BOUNDS)) {
+				if (SOUND_BUTTON_BOUNDS.contains(event.x, event.y)) {
 					Settings.sound = !Settings.sound;
 					if (Settings.sound) {
 						Assets.click.play(1.0f);
 					}
 				}
-				if (inBounds(event, PLAY_BUTTON_BOUNDS)) {
+				if (PLAY_BUTTON_BOUNDS.contains(event.x, event.y)) {
 					if (Settings.sound) {
 						Assets.click.play(1.0f);
 					}
 					//getGame().setScreen(new GameScreen(getGame()));
 					return;
 				}
-				if (inBounds(event, HIGHSCORE_BUTTON_BOUNDS)) {
+				if (HIGHSCORE_BUTTON_BOUNDS.contains(event.x, event.y)) {
 					if (Settings.sound) {
 						Assets.click.play(1.0f);
 					}
 					//getGame().setScreen(new HighscoreScreen(getGame()));
 					return;
 				}
-				if (inBounds(event, HELP_BUTTON_BOUNDS)) {
+				if (HELP_BUTTON_BOUNDS.contains(event.x, event.y)) {
 					if (Settings.sound) {
 						Assets.click.play(1.0f);
 					}
@@ -59,13 +59,6 @@ public class MainMenuScreen extends Screen {
 				}
 			}
 		}
-	}
-	
-	private boolean inBounds(TouchEvent event, Rect bounds) {
-		if (event.x > bounds.left && event.x < bounds.right && event.y > bounds.top && event.y < bounds.bottom) {
-			return true;
-		}
-		return false;
 	}
 
 	@Override
