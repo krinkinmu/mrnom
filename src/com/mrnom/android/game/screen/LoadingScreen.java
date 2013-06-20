@@ -45,17 +45,19 @@ public class LoadingScreen extends Screen {
 		Settings.load(getGame().getFileIO());
 		getGame().setScreen(new MainMenuScreen(getGame()));
 	}
-	
-	@Override
-	public void dispose() {}
 
 	@Override
-	public void present(float delta) {}
+	public void present(float delta) {
+		
+	}
 
 	@Override
 	public void pause() {}
 
 	@Override
 	public void resume() {}
+
+	@Override
+	public void dispose() {}
 
 }
