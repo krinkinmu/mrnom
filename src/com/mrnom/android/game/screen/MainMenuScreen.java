@@ -47,7 +47,7 @@ public class MainMenuScreen extends Screen {
 					if (Settings.sound) {
 						Assets.click.play(1.0f);
 					}
-					//getGame().setScreen(new HighscoreScreen(getGame()));
+					getGame().setScreen(new HighscoreScreen(getGame()));
 					return;
 				}
 				if (HELP_BUTTON_BOUNDS.contains(event.x, event.y)) {
