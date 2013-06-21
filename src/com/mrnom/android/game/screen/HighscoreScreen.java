@@ -14,8 +14,6 @@ import com.mrnom.ui.Screen;
 public class HighscoreScreen extends Screen {
 	private static final Rect BUTTON = new Rect(0, 416, 64, 480);
 	private static final Rect TITLE = new Rect(64, 20, 256, 84);
-	private static final int CHAR_WIDTH = 20;
-	private static final int CHAR_HEIGHT = 32;
 	
 	private final StringBuilder builder = new StringBuilder();
 	
@@ -53,20 +51,6 @@ public class HighscoreScreen extends Screen {
 			builder.append(i).append(". ").append(Settings.highscores[i]);
 			drawText(builder.toString(), x, y);
 			y += 50;
-		}
-	}
-	
-	private void drawText(String line, int x, int y) {
-		Graphics graphics = getGame().getGraphics();
-		for (int i = 0; i < line.length(); ++i) {
-			char c = line.charAt(i);
-			if (c == '.') {
-				graphics.drawPixmap(Assets.numbers, x, y, CHAR_WIDTH * 10, 0, CHAR_WIDTH, CHAR_HEIGHT);
-			}
-			if (c >= '0' && c <= '9') {
-				graphics.drawPixmap(Assets.numbers, x, y, CHAR_WIDTH * (c - '0'), 0, CHAR_WIDTH, CHAR_HEIGHT);
-			}
-			x += CHAR_WIDTH;
 		}
 	}
 
