@@ -3,8 +3,9 @@ package com.mrnom.android.game.screen.model;
 import java.util.Random;
 
 public class World {
-	private static final int WORLD_WIDTH = 10;
-	private static final int WORLD_HEIGHT = 13;
+	public static final int WORLD_WIDTH = 10;
+	public static final int WORLD_HEIGHT = 13;
+	
 	private static final int SCORE_INCREMENT = 10;
 	private static final float TICK_INITIAL = 0.5f;
 	private static final float TICK_DECREMENT = 0.05f;
@@ -68,9 +69,9 @@ public class World {
 				} else {
 					placeStain();
 				}
-			}
-			if (score % 100 == 0 && tick - TICK_DECREMENT > 0) {
-				tick -= TICK_DECREMENT;
+				if (((score % 100) == 0) && ((tick - TICK_DECREMENT) > 0)) {
+					tick -= TICK_DECREMENT;
+				}
 			}
 		}
 	}

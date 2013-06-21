@@ -56,6 +56,18 @@ public class Snake {
 		default:
 			break;
 		}
+		if (head.x >= World.WORLD_WIDTH) {
+			head.x = 0;
+		}
+		if (head.x < 0) {
+			head.x = World.WORLD_WIDTH - 1;
+		}
+		if (head.y >= World.WORLD_HEIGHT) {
+			head.y = 0;
+		}
+		if (head.y < 0) {
+			head.y = World.WORLD_HEIGHT - 1;
+		}
 	}
 	
 	public boolean checkBitten() {
